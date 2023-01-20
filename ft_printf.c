@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:09:50 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/16 00:55:09 by tayou            ###   ########.fr       */
+/*   Updated: 2023/01/18 02:41:26 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static int	get_digit(long long number)
 	return (digit);
 }
 
-static void	fill_number_array(char *number_array, long long number, int digit)
+static char	*fill_number_array(char *number_array, long long number, int digit)
 {
 	int	i;
 
@@ -120,6 +120,7 @@ static void	fill_number_array(char *number_array, long long number, int digit)
 		i--;
 	}
 	number_array[digit] = '\0';
+	return (number_array);
 }
 
 void	print_decimal_number(int n, int *print_count)
@@ -133,10 +134,57 @@ void	print_decimal_number(int n, int *print_count)
 	number_array = (char *) malloc(sizeof(char) * digit + 1);
 	if (number_array == 0)
 		return ;
-	fill_number_array(number_array, number, digit);
+	number_array = fill_number_array(number_array, number, digit);
 	write(1, number_array, digit);
 	(*print_count) += digit;
 	free(number_array);
+}
+
+static int	get_digit(unsigned int number)
+{
+	int	digit;
+
+	digit = 0;
+	if (number == 0)
+		return (1);
+	while (number != 0)
+	{
+		number /= 10;
+		digit++;
+	}
+	return (digit);
+}
+
+static char	*fill_number_array(char *array, unsigned int number, int digit)
+{
+	int	i;
+
+	if (number == 0)
+		array[0] = '0';
+	i = digit - 1;
+	while (number != 0)
+	{
+		array[i] = number % 10 + '0';
+		number /= 10;
+		i--;
+	}
+	array[digit] = '\0';
+	return (array);
+}
+
+void	print_unsigned_number(unsigned int number, int *print_count)
+{
+	char	*array;
+	int		digit;
+
+	digit = get_digit(number);
+	array = (char *) malloc(sizeof(char) * digit + 1);
+	if (array == 0)
+		return (0);
+	array = fill_number_array(array, number, digit);
+	write(1, array, digit);
+	(*print_count) += digit;
+	free(array);
 }
 
 void	check_type(va_list ap, char character, int *print_count)
@@ -149,6 +197,8 @@ void	check_type(va_list ap, char character, int *print_count)
 		print_address(va_arg(ap, void *), print_count);
 	else if (character == 'd' || character == 'i')
 		print_decimal_number(va_arg(ap, int), print_count);
+	else if (character == 'u')
+		print_unsigned_number(va_arg(ap, unsigned int), print_count);
 }
 
 int	ft_printf(const char *str, ...)

@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:43:52 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/15 22:04:51 by tayou            ###   ########.fr       */
+/*   Updated: 2023/01/18 01:44:41 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@
 int	ft_printf(const char *str, ...);
 
 int	my_strlen(const char *str);
-
 
 #endif
