@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toupper.c                                          :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 21:53:31 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/21 16:34:06 by tayou            ###   ########.fr       */
+/*   Created: 2023/01/21 14:35:22 by tayou             #+#    #+#             */
+/*   Updated: 2023/01/21 17:44:18 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "ft_printf.h"
+
+void	ft_print_string(char *str, int *print_count)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	int	str_len;
+
+	if (str == NULL)
+		str = "(null)";
+	str_len = my_strlen(str);
+	write(1, str, str_len);
+	(*print_count) += str_len;
 }

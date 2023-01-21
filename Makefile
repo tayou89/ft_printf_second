@@ -8,7 +8,12 @@ ARFLAGS = -rcs
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft
 SRCS = ft_printf.c \
-	   various_funtions.c
+	   ft_various.c \
+	   ft_print_character.c ft_print_string.c \
+	   ft_print_address.c \
+	   ft_print_decimal.c ft_print_unsigned.c ft_print_hexa.c \
+	   ft_print_percent.c
+		
 OBJS = $(SRCS:.c=.o)
 
 all : 

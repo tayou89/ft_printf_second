@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toupper.c                                          :+:      :+:    :+:   */
+/*   print_character.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 21:53:31 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/21 16:34:06 by tayou            ###   ########.fr       */
+/*   Created: 2023/01/21 14:41:27 by tayou             #+#    #+#             */
+/*   Updated: 2023/01/21 14:55:40 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "ft_printf.h"
+
+void	ft_print_character(char c, int *print_count)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	write(1, &c, 1);
+	(*print_count)++;
 }

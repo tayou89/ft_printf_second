@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   various_funtions.c                                 :+:      :+:    :+:   */
+/*   ft_print_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 20:56:23 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/15 21:43:58 by tayou            ###   ########.fr       */
+/*   Created: 2023/01/21 16:51:44 by tayou             #+#    #+#             */
+/*   Updated: 2023/01/21 16:51:55 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	my_strlen(const char *str)
-{
-	int	i;
+#include "ft_printf.h"
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+void	ft_print_percent(int *print_count)
+{
+	write(1, "%", 1);
+	(*print_count)++;
 }
